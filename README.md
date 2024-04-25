@@ -1,0 +1,2 @@
+# LogoLab
+Dynamic Logo Generator
