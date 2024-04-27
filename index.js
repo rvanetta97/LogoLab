@@ -1,3 +1,4 @@
+//packages/exports needed to generate logo
 const fs = require("fs");
 const inquirer = require("inquirer");
 const logo_shapes = require("./lib/shapes");
@@ -17,13 +18,13 @@ const questions = [
     },
     {
         type: "list",
-        name: "logo-shape",
+        name: "logoShape",
         message: "What shape would you like your logo to be?",
         choices: ["Circle", "Square", "Triangle"],
     },
     {
         type: "input",
-        name: "logo-color",
+        name: "logoColor",
         message: "What color would you like the shape of the logo to be? *this can be a color name or a hexadecimal number*"
     },
   
