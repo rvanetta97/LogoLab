@@ -30,9 +30,12 @@ const questions = [
 
 ];
 
+//generates the logo from the responses of the user and the shape type they chose
 function generateLogo(responses) {
     let shape;
 
+
+    //breaks out based on the user choice between Circle, Square, & Tirangle
     switch (responses.logoShape) {
         case "Circle":
             shape = new Circle(responses.logoColor);
@@ -47,6 +50,7 @@ function generateLogo(responses) {
             throw new Error("Invalid shape selected");
     }
 
+    //tests to ensure that the shape is a choice within the code
     let shapeSVG = "";
     if (shape) {
         shapeSVG = shape.render();
@@ -54,10 +58,11 @@ function generateLogo(responses) {
         console.error("Shape object is undefined");
     }
 
+    //title of the logo
     const titleSVG = `<text x="150" y="150" text-anchor="middle" font-size="40" fill="${responses.textColor}">${responses.logoTitle}</text>`
         console.log(titleSVG)
 
-    // Add inline CSS styling to the SVG elements
+    // CSS where the logo text and shape will be
     const logoSVG = `
     <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
         <style>
@@ -88,9 +93,10 @@ function generateLogo(responses) {
 
 
 function cleanSVGContent(svgContent) {
-    // Remove any script or comments injected by live-server
+    // Removes any script or comments injected by live-server
     return svgContent.replace(/<!--[\s\S]*?-->/g, '').replace(/<script>[\s\S]*?<\/script>/g, '');
 }
+
 
 function writeToFile(fileName, content) {
     return new Promise((resolve, reject) => {
@@ -105,6 +111,7 @@ function writeToFile(fileName, content) {
         });
     });
 }
+
 
 function init() {
     inquirer.prompt(questions).then((responses) => {
