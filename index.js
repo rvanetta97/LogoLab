@@ -96,7 +96,7 @@ function writeToFile(fileName, content) {
     return new Promise((resolve, reject) => {
         const cleanedContent = cleanSVGContent(content);
 
-        fs.writeFile(fileName, content, 'utf8', (err) => {
+        fs.writeFile(fileName, cleanedContent, 'utf8', (err) => {
             if (err) {
                 reject(err);
             } else {
